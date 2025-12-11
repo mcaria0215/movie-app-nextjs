@@ -1,0 +1,6 @@
+# 필수 무시 목록
+.next/
+node_modules/
+
+# 기타
+.env
