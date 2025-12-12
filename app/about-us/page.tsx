@@ -1,12 +1,15 @@
-import Navigation from "../../components/Navigation";
+import type { Metadata } from "next";
 
-const AboutUs = ()=>{
+export const metadata: Metadata = {
+  title: "About Us",
+};
+
+const AboutUsPage = ()=>{
   return (
-    <div>
-      <Navigation />
+    <main>      
       <h1>About Us</h1>
-    </div>  
+    </main>  
   )
 }
 
-export default AboutUs;
+export default AboutUsPage;
