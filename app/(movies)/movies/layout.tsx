@@ -1,3 +1,5 @@
+import styles from '../../../style/Movie.module.css';
+
 export default function BlogLayout({
   children,
 }: {

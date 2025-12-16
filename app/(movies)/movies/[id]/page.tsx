@@ -1,26 +1,37 @@
 import type { Metadata } from "next";
-import { API_URL } from "../../../(home)/page";
+import { Suspense } from "react";
+import MovieVideos from "../../../../components/MovieVideos";
+import MovieInfo from "../../../../components/MovieInfo";
+import { getMovieId } from "../../../../components/MovieInfo";
+import MovieCredits from "../../../../components/MovieCredits";
 
-export const metadata: Metadata = {
-  title: "Movie",
-};
-
-const getMovie = async (id:string) => {
-  const response = await fetch(`${API_URL}/${id}`);
-  const json = await response.json()
-  return json;
+interface IParams {
+  params: {id: string};
 }
 
+export async function generateMetadata({ params: {id}} : IParams) {
+  const movie = await getMovieId(id);
+  return {
+    title: movie.title,
+  }
+}
 
-export default async function MovieDetail({
+export default async function MovieDetailPage({
   params: {id},
-}: { params: { id: string };
-}) {
-  const movie = await getMovie(id);
-
+}: IParams) {
   return (
-    <div>      
-      <h1>{movie.title}</h1>
+    <div>
+      <h2>Movie info</h2>
+      <Suspense fallback={<h3>Loading movie info</h3>}>
+        <MovieInfo id={id}/>
+      </Suspense>      
+      <Suspense fallback={<h3>Loading movie credits</h3>}>
+        <MovieCredits id={id}/>
+      </Suspense>
+      <h2>Movie videos</h2>
+      <Suspense fallback={<h3>Loading movie videos</h3>}>
+        <MovieVideos id={id}/>
+      </Suspense>      
     </div>
   )
 }
