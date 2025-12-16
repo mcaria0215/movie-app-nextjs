@@ -1,4 +1,4 @@
-import { API_URL } from "../app/(home)/page";
+import { API_URL } from "../app/constants";
 import styles from "../style/MovieCredits.module.css";
 
 const DEFAULT_PROFILE_IMAGE = "https://img.freepik.com/premium-vector/logo-movie-film-company_745688-275.jpg";

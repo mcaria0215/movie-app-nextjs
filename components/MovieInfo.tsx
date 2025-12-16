@@ -1,4 +1,4 @@
-import { API_URL } from "../app/(home)/page";
+import { API_URL } from "../app/constants";
 import styles from "../style/MovieInfo.module.css";
 
 export const getMovieId = async (id:string) => {

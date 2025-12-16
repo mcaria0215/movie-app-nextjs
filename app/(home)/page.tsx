@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import MovieCard from "../../components/MovieCard";
 import styles from "../../style/home.module.css";
+import { API_URL } from "../constants";
 
 export const metadata: Metadata = {
   title: "Home",
 }
-
-export const API_URL: string = "https://nomad-movies.nomadcoders.workers.dev/movies";
 
 const getMovies = async () => {
   const response = await fetch(API_URL);
